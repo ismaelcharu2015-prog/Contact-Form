@@ -1,22 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-  <title>Contact Form</title>
+  <meta charset="UTF-8">
+  <title>แบบฟอร์มติดต่อ</title>
+  <style>
+    body {
+      font-family: 'Prompt', sans-serif;
+      background-color: #f9f5f0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #5a3e2b;
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #3c2f23;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #8d6e63;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #6d4c41;
+    }
+  </style>
 </head>
 <body>
-  <h2>แบบฟอร์มติดต่อ</h2>
-  <form id="contactForm">
-    <label>ชื่อ:</label><br>
-    <input type="text" name="name" required><br><br>
+  <div class="form-container">
+    <h2>แบบฟอร์มติดต่อ</h2>
+    <form id="contactForm">
+      <label for="name">ชื่อ</label>
+      <input type="text" id="name" name="name" placeholder="กรอกชื่อของคุณ" required>
 
-    <label>อีเมล:</label><br>
-    <input type="email" name="email" required><br><br>
+      <label for="email">อีเมล</label>
+      <input type="email" id="email" name="email" placeholder="example@email.com" required>
 
-    <label>ข้อความ:</label><br>
-    <textarea name="message" required></textarea><br><br>
+      <label for="message">ข้อความ</label>
+      <textarea id="message" name="message" rows="5" placeholder="พิมพ์ข้อความของคุณที่นี่..." required></textarea>
 
-    <button type="submit">ส่งข้อมูล</button>
-  </form>
+      <button type="submit">ส่งข้อมูล</button>
+    </form>
+  </div>
 
   <script>
     document.getElementById("contactForm").addEventListener("submit", function(e) {
@@ -33,11 +92,11 @@
       })
       .then(res => res.text())
       .then(response => {
-        alert("ส่งข้อมูลเรียบร้อยแล้ว!");
+        alert("ส่งข้อมูลเรียบร้อยแล้ว ขอบคุณที่ติดต่อเรา!");
         e.target.reset();
       })
       .catch(err => {
-        alert("เกิดข้อผิดพลาด: " + err);
+        alert("เกิดข้อผิดพลาดในการส่งข้อมูล: " + err);
       });
     });
   </script>
